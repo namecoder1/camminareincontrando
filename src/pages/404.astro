@@ -1,0 +1,40 @@
+---
+import MainLayout from '../layout/MainLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<MainLayout
+  title="Errore 404"
+  description="Nessun risultato trovato"
+  ogTitle='Errore 404'
+  ogDescription='Nessun risultato trovato'
+  robots="noindex, nofollow"
+  keywords=''
+  ogType='website'
+  ogUrl=''
+>
+  <main
+    class="grid min-h-full place-items-center bg-white px-6 py-40 sm:py-32 lg:px-8"
+  >
+    <div class="text-center py-20">
+      <p
+        class="text-3xl font-semibold bg-gradient-to-l from-red-700 to-gray-400 text-transparent bg-clip-text"
+      >
+        Errore 404
+      </p>
+      <h1
+        class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl"
+      >
+        Pagina non trovata
+      </h1>
+      <p class="mt-6 text-base leading-7 text-gray-600">
+        Mi dispiace ma la pagina che hai cercato non esiste, torna indietro
+        e riprova.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <Button title="Torna alla Home" link="/" />
+        <Button title="Torna al Blog" link="/blog" />
+      </div>
+    </div>
+  </main>
+</MainLayout>

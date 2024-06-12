@@ -1,0 +1,62 @@
+---
+export const prerender = false;
+import { sanityClient } from "sanity:client";
+
+const content = await sanityClient.fetch(`*[_type == "percorso"][2]{
+    title,
+    subtitle,
+    "image": mainImage.asset -> url,
+    text,
+}`);
+
+ const specifics = await sanityClient.fetch(`*[_type == "corsi" && current -> _id == "ec7b42e3-8e3a-41fc-a338-4075e8937d2a"  ] {
+  "ref": current[0] -> title,
+  title,
+  text
+}`);
+---
+
+<div class="mx-auto max-w-7xl px-6 lg:px-8 ">
+  <div class="mx-auto grid max-w-2xl grid-cols-1 items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+    <div class="lg:pr-4 lg:order-2">
+      <div class="relative overflow-hidden rounded-3xl bg-gray-900 px-6 pb-9 pt-64 shadow-2xl sm:px-12 lg:max-w-lg lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
+        <img class="absolute inset-0 h-full w-full object-cover brightness-125 " src={content.image} alt={'Immagine di :' + content.title} >
+        <div class="absolute inset-0 bg-gray-700/60 mix-blend-multiply"></div>
+        <figure class="relative isolate">
+          <blockquote class="mt-6 text-xl font-semibold leading-8 text-white">
+            <h2 class="text-2xl sm:text-4xl">{content.title}</h2>
+          </blockquote>
+        </figure>
+      </div>    
+    </div>
+    <div>
+      <div>
+        <div class="text-base leading-7 text-gray-700 lg:max-w-lg">
+          <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{content.subtitle}</h1>
+          <div class="max-w-xl">
+            <p class="mt-6">{content.text}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mx-auto grid grid-cols-1 lg:grid-cols-3 items-center gap-5 justify-center my-5 ">
+  </div>
+</div>
+
+<section>
+  <div class="mx-auto max-w-7xl px-6 lg:px-8 my-10">
+    <div class="mx-auto grid max-w-2xl grid-cols-1 auto-rows-auto items-start gap-x-8 gap-y-10 sm:gap-y-10 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      {
+        specifics.map((specific: any) => {
+          return (
+            <div class="flex flex-col mx-auto my-auto">
+            <h1 class="text-2xl font-semibold mb-2">{specific.title}</h1>
+            <p>{specific.text}</p>
+          </div>
+        )
+      })
+    }
+    </div>
+  </div>
+</section>

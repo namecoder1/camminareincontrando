@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+---
+<header>
+<nav class="font-poppins py-4 bg-[#c8cab5] text-black">
+  <div class="container mx-auto px-4 lg:flex lg:justify-between items-center gap-6">
+    <div class="flex flex-col gap-4 sm:gap-0 sm:flex-row items-center justify-center sm:justify-between lg:w-auto w-full">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2">
+        <a href="/"><Image src={logo} alt="Logo Camminare Incontrando" width={50} /></a>
+        <h1 class="font-montserrat font-bold text-xl md:text-[20px] w-full text-center"><a href="/">Camminare <span class="font-normal">Incontrando</span></a> 
+        </h1>
+      </div>
+      <div class="lg:hidden flex items-center">
+        <button class="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <title>Menu</title>
+            <g fill="none">
+              <path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="hidden lg:flex lg:flex-row flex-col items-center justify-start lg:space-x-1 navigation-menu mt-8 lg:mt-0 text-center sm:text-end ">
+      <a href="/" class="py-2 px-3 block hover:text-red-900">Home</a>
+      <a href="/about" class="py-2 px-3 block hover:text-red-900">About</a>
+      <a href="/blog" class="py-2 px-3 block hover:text-red-900">Blog</a>
+      <a href="/scopri" class="py-2 px-3 block hover:text-red-900">Scopri</a>
+      <a href="/contattami" class="py-2 px-3 block hover:text-red-900">Contattami</a>
+    </div>
+  </div>
+</nav>
+</header>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mobileMenuButton: any = document.querySelector(".mobile-menu-button");
+  const mobileMenu: any = document.querySelector(".navigation-menu");
+
+  mobileMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden")
+  })
+})
+</script>

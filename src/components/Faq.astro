@@ -1,0 +1,31 @@
+---
+export const prerender = false;
+import { sanityClient } from "sanity:client";
+const faqs = await sanityClient.fetch(`*[_type == "faq"]{
+  question,
+  answer  
+}`);
+---
+
+<div class="bg-white">
+  <div class="mx-auto max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold leading-10 tracking-tight text-gray-900">FAQ</h2>
+      <p class="mt-6 text-base leading-7 text-gray-600">Qua sotto sono riportate alcune delle domande più frequenti che i miei clienti mi fanno. Hai delle domande diverse o non trovi la giusta risposta? Contattami pure <a href="mailto:info@camminareincontrando.com" class="font-semibold text-red-600 hover:text-red-400">inviando una mail</a> e ti risponderò nel minor tempo possibile.</p>
+    </div>
+    <div class="mt-20">
+      <dl class="space-y-16 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-16 sm:space-y-0 lg:gap-x-10">
+        {
+          faqs.map((faq: any) => {
+            return (
+              <div>
+                <dt class="text-base font-semibold leading-7 text-gray-900"><i class="fa-solid fa-circle-question pr-1"></i>{faq.question}</dt>
+                <dd class="mt-2 text-base leading-7 text-gray-600">{faq.answer}</dd>
+              </div>
+            )
+          })
+        }
+      </dl>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+---
+import ProductBox from './BoxProducts.astro';
+import Button from './Button.astro';
+---
+
+<div class="bg-white font-poppins" id="products-section">
+  <div
+    class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
+  >
+    <h2 class="sr-only">CI Shirts</h2>
+    <div class="text-center my-14">
+      <h1 class="text-3xl font-bold">CI Shirts</h1>
+      <p class="mx-5 lg:mx-20 mt-4">
+        CI Shirt <span class="font-bold">ricorda</span> ad ogni cellula del tuo corpo
+        <span class="font-bold">il messaggio che hai predefinito</span> scegliendo
+        una delle immagini che ho creato per te. Questo innesca un circolo virtuoso di
+        <span class="font-bold">forme ed informazioni che agiscono sul tuo essere</span> informandoti ogni volta
+        di esprimere il tuo potenziale ai massimi livelli.
+      </p>
+      <p class="mt-2 mx-5 lg:mx-16">
+        Per far ciò mi avvalgo di un <a
+          href="https://cishirt.myspreadshop.it/"
+          class="underline underline-offset-2 hover:text-red-700"
+          target="_blank">negozio online</a
+        > e di <a
+          class="underline underline-offset-2 hover:text-red-700"
+          href="https://www.stampatizza.it/"
+          target="_blank">professionisti qualificati</a
+        > coi quali possiamo insieme creare il tuo abbigliamento di benessere personale.
+      </p>
+    </div>
+    <div
+      class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8"
+    >
+      <ProductBox
+        image="/src/assets/tshirt-2.jpg"
+        alt="Immagine di Prodotto"
+        link="https://cishirt.myspreadshop.it/"
+        title="Big Logo CI"
+        description="Questa semplice maglietta rappresenta il mio logo, infatti le iniziali sono rappresentate a formare un cerchio."
+        colors="5 colori"
+      />
+      <ProductBox
+        image="/src/assets/tshirt-1.jpg"
+        alt="Immagine di Prodotto"
+        link="https://cishirt.myspreadshop.it/"
+        title="Tarocchi: Il Matto"
+        description="Nella cultura dei tarocchi, il Matto ha un'importanza fondamentale, è il punto di partenza per l'evoluzione personale."
+        colors="2 colori"
+      />
+      <ProductBox
+        image="/src/assets/tshirt-3.jpg"
+        alt="Immagine di Prodotto"
+        link="https://cishirt.myspreadshop.it/"
+        title="Salvador Dalì"
+        description=`"La temperatura del successo è semplicemente la gelosia dei malcontenti." - Salvador Dalì`
+        colors="3 colori"
+      />
+    </div>
+    <div class="text-center py-10 lg:py-16">
+      <h2 class="text-xl font-semibold">Vuoi creare il tuo stile?</h2>
+      <p class="mt-2 mb-8">Clicca sul link e iniziamo a crearlo insieme.</p>
+      <Button link="mailto:info@camminareincontrando.com" title="Scrivimi" />
+    </div>
+  </div>
+</div>

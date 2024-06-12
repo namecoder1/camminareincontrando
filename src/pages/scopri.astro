@@ -1,0 +1,28 @@
+---
+export const prerender = false;
+
+import Coaching from '../components/CoachingCard.astro';
+import Hero from '../components/Hero.astro';
+import MainLayout from '../layout/MainLayout.astro';
+
+import Products from '../components/Products.astro';
+import Events from '../components/Events.astro';
+---
+
+<MainLayout
+  title="Scopri"
+  description="Offro corsi di Meditazione e sedute di Riflessione volte a migliorare il benessere e la mente dei miei clienti."
+  ogTitle="Scopri | Camminare Incontrando"
+  ogDescription="Offro corsi di Meditazione e sedute di Riflessione volte a migliorare il benessere e la mente dei miei clienti, clicca e scoprile tutte!"
+  ogType='webiste'
+  ogUrl='/scopri'
+  >
+  <Hero
+    heroImg="/src/assets/il-cammino.jpg"
+    title="Scopri"
+    description="Ecco le mie attività. Scrivimi se vuoi maggiori informazioni."
+  />
+  <Coaching />
+  <Products />
+  <Events />
+</MainLayout>

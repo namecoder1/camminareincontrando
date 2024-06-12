@@ -1,0 +1,108 @@
+---
+export const prerender = true;
+import { sanityClient } from 'sanity:client';
+import { formatDate } from '../../../utils';
+import { capitalize } from '../../../utils';
+import MainLayout from '../../../layout/MainLayout.astro';
+import Button from '../../../components/Button.astro';
+
+export async function getStaticPaths() {
+  const postsCategoriesRaw = await sanityClient.fetch(`
+  *[_type == "post" && length(categories) > 0 ]{
+    "categoryName": categories[]->
+  }
+  `);
+
+  const categories = [
+    ...new Set(
+      postsCategoriesRaw
+        .map((x: any) => x.categoryName.map((y: any) => y.slug.current))
+        .flat()
+    ),
+  ];
+  return categories.map((x) => {
+    return {
+      params: {
+        tag_id: x,
+      },
+    };
+  });
+}
+
+const { tag_id } = Astro.params;
+const posts =
+  await sanityClient.fetch(`*[_type == "post" && "${tag_id}" in categories[]->slug.current ] | order(publishedAt desc){
+    _id,
+    title,
+    "image": mainImage.asset -> url,
+    publishedAt,
+    "category": categories[0] -> {title, slug},
+    excerpt,
+    mainImage,
+    slug
+}`);
+const post = posts[0];
+---
+
+<MainLayout
+  title={post.category.title}
+  description="cisao"
+  ogTitle={'Post della categoria: ' + post.category.title}
+  ogDescription={'Clicca per guardare gli articoli caricati della categoria: ' + post.category.title }
+  ogType='website'
+  ogUrl={'/blog/tag/' + post.category.slug.current}
+>
+  <div class="bg-white py-24 sm:py-28 font-poppins">
+    <p class="font-semibold text-3xl text-center mt-2 mx-10">
+      Post della categoria: <span
+        class="font-bold text-red-500 underline-offset-4 underline"
+        >#{post.category.title}</span>
+    </p>
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div
+        class="font-poppins mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3"
+      >
+        {
+          posts.map((post: any) => {
+            return (
+              <article class="flex flex-col items-start justify-between">
+                <div class="relative w-full">
+                  <a href={'/blog/' + post.slug.current}>
+                    <img
+                      class="rounded-md"
+                      src={post.image}
+                      alt="Immagine di copertina dell'articolo"
+                    />
+                    <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+                  </a>
+                </div>
+                <div class="max-w-xl">
+                  <div class="mt-8 flex items-center gap-x-4 text-xs">
+                    <span>{formatDate(post.publishedAt)}</span>
+                    <a
+                      href={'/blog/tag/' + post.category.slug.current}
+                      class="relative z-10 border-red-200/60 bg-white border-2 py-1.5 px-2 rounded-xl text-red-700 hover:bg-red-500/80 hover:text-white duration-200 hover:border-red-400/70"
+                    >
+                      #{post.category.title}
+                    </a>
+                  </div>
+                  <div class="group relative">
+                    <a href={'/blog/' + post.slug.current}>
+                      <h1 class="text-2xl mt-2">{post.title}</h1>
+                      <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                        {post.excerpt}.
+                      </p>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            );
+          })
+        }
+      </div>
+      <div class="mt-20">
+        <Button title="Torna Indietro" link="/blog" />
+      </div>
+    </div>
+  </div>
+</MainLayout>

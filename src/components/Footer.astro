@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.png"
+import SocialMenu from "./SocialMenu.astro";
+---
+
+<footer class="bg-[#c8cab5] font-poppins" aria-labelledby="footer-heading">
+  <h2 id="footer-heading" class="sr-only">Footer</h2>
+  <div class="mx-auto max-w-7xl px-6 pb-8 pt-8 lg:px-8 lg:py-8 flex flex-col items-center">
+    <div class="flex flex-col items-center text-center md:flex md:flex-row md:gap-20 md:items-center">
+      <Image src={logo} alt="Logo Camminare Incontrando" width={100} height={100} />
+          <ul class="mt-10 flex-col md:flex md:flex-row items-center justify-center md:mt-0 gap-6">
+            <li class="my-3 text-lg hover:text-red-900"><a href="/">Home</a></li>
+            <li class="my-3 text-lg hover:text-red-900"><a href="/about">About</a></li>
+            <li class="my-3 text-lg hover:text-red-900"><a href="/blog">Blog</a></li>
+            <li class="my-3 text-lg hover:text-red-900"><a href="/scopri">Scopri</a></li>
+            <li class="my-3 text-lg hover:text-red-900"><a href="/contattami">Contattami</a></li>
+          </ul>
+    </div>
+
+    <div class="my-3 flex items-center gap-5 jusitfy-center flex-col md:flex-row md:my-0">
+      <a href="https://www.iubenda.com/privacy-policy/56085812" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Privacy Policy ">Privacy Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+      <a href="https://www.iubenda.com/privacy-policy/56085812/cookie-policy" class="iubenda-white iubenda-noiframe iubenda-embed iubenda-noiframe " title="Cookie Policy ">Cookie Policy</a><script type="text/javascript">(function (w,d) {var loader = function () {var s = d.createElement("script"), tag = d.getElementsByTagName("script")[0]; s.src="https://cdn.iubenda.com/iubenda.js"; tag.parentNode.insertBefore(s,tag);}; if(w.addEventListener){w.addEventListener("load", loader, false);}else if(w.attachEvent){w.attachEvent("onload", loader);}else{w.onload = loader;}})(window, document);</script>
+    </div>
+
+    <div class="mt-8 border-t border-black/20 pt-8 md:flex md:items-center md:gap-20">
+      <SocialMenu color="currentColor"/>
+      <div class="flex flex-col">
+        <p class="mt-8 text-xs leading-5 text-black text-center md:order-1 md:mt-0">&copy; 2024 Camminare Incontrando | All rights reserved | P.IVA 02294400417</p>
+        <p class="text-sm order-2 text-center md:text-left">Maded by <a class="font-semibold hover:text-red-900" target="_blank" href="https://tobiabartolomei.com">tobiabartolomei.com</a></p>
+      </div>
+    </div>
+  </div>
+</footer>

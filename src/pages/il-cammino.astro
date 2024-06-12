@@ -1,0 +1,56 @@
+---
+export const prerender = false;
+import Academy from '../components/Academy.astro';
+import { sanityClient } from 'sanity:client';
+import MainLayout from '../layout/MainLayout.astro';
+import Divider from '../components/Divider.astro';
+
+import scopri from '../assets/scopri.jpg';
+import Hero from '../components/Hero.astro';
+import Movimento from '../components/Movimento.astro';
+import Trattamento from '../components/Trattamento.astro';
+import Button from '../components/Button.astro';
+
+const contents = await sanityClient.fetch(`*[_type == "percorso"]{
+    title,
+    subtitle,
+    "image": mainImage.asset -> url,
+    text,
+}`);
+---
+
+<MainLayout
+  title="Il cammino"
+  description="Offro corsi di potenziamento per migliorare il rapporto con il proprio corpo e stimolare la crescita personale."
+  ogTitle='Percorsi | Camminare Incontrando'
+  ogDescription='Offro corsi di potenziamento per migliorare il rapporto con il proprio corpo e stimolare la crescita personale.'
+  ogType='website'
+  ogUrl='/coaching'
+>
+  <Hero
+    heroImg="/src/assets/il-cammino.jpg"
+    title="Il cammino"
+    description="Esplora e scegli ciò che più si avvicina alla tua ricerca interiore."
+  />
+  <div>
+    <div class="bg-white py-10 sm:pt-32 sm:pb-20">
+      <div class="flex items-center justify-center mb-16 sm:mb-32">
+        <h1 class="text-5xl font-bold">Percorsi</h1>
+      </div>
+      <div class="my-20">
+        <Academy />
+      </div>
+      <Divider />
+      <div class="my-20">
+        <Trattamento />
+      </div>
+      <Divider />
+      <div class="my-20">
+        <Movimento />
+      </div>
+    </div>
+  </div>
+  <div class="flex items-center justify-center mb-24">
+    <Button title="Torna Indietro" link="/scopri" />
+  </div>
+</MainLayout>

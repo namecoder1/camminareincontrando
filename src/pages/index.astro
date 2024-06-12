@@ -1,8 +1,23 @@
 ---
+export const prerender = false;
 
+import Latest from '../components/Latest.astro';
+import Skills from '../components/Skills.astro';
+import MainLayout from '../layout/MainLayout.astro';
+import HeroHome from '../components/HeroHome.astro';
+import Cta from '../components/Cta.astro';
 ---
-<html>
-  <body>
-    <h1>Hello, World!</h1>
-  </body>
-</html>
+
+<MainLayout
+  title="Homepage"
+  ogTitle="Camminare Incontrando | HomePage"
+  description="La mia missione è quella di aiutarti a scoprire il tuo potenziale nascosto e a raggiungere un benessere a 360 gradi, rafforza il tuo percorso con cura e competenza"
+  ogDescription='La mia missione è quella di aiutarti a scoprire il tuo potenziale nascosto e a raggiungere un benessere a 360 gradi, rafforza il tuo percorso con cura e competenza'
+  ogType='website'
+  ogUrl=''
+  >
+  <HeroHome />
+  <Skills />
+  <Latest />
+  <Cta />
+</MainLayout>

@@ -1,0 +1,52 @@
+---
+export const prerender = false;
+import { sanityClient } from "sanity:client";
+import { formatDate } from '../utils';
+import Button from "./Button.astro";
+const posts = await sanityClient.fetch(`*[_type == "post" && defined(slug)] | order(publishedAt desc)[0..2]{
+  title, 
+    "slug": slug.current,
+    excerpt,
+    "pubDate": publishedAt,
+  "catTitle": categories[0] -> title,
+    "catSlug": categories[0] -> slug.current,
+    "image": mainImage.asset -> url
+}`);
+---
+<section id="latest-articles">
+<div class="my-8 font-poppins flex flex-col mx-auto max-w-7xl px-6 lg:px-8">
+  <h1 class="text-center font-bold text-3xl">Ultimi Articoli</h1>
+  <div class="mx-auto mt-12 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+    {
+      posts.map((post: any) => {
+        return (
+                <article class="flex flex-col items-start justify-between">
+                <div class="relative w-full">
+                  <a href={'/blog/' + post.slug}>
+                  <img class="rounded-md" src={post.image} alt={"Immagine di copertina dell' articolo: " + post.title}>
+                  <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div> 
+                  </a>
+                </div>
+                <div class="max-w-xl">
+                  <div class="mt-8 flex items-center gap-x-4 text-xs">
+                  <p>{formatDate(post.pubDate)}</p>            
+                    <a href={'/blog/' + post.catSlug} class="relative z-10 border-red-200/60 bg-white border-2 py-1.5 px-2 rounded-xl text-red-700 hover:bg-red-500/80 hover:text-white duration-200 hover:border-red-400/70">#{post.catTitle}</a>
+                  </div>
+                  <div class="group relative">
+                    <a href={'/blog/' + post.slug}>
+                      <h1 class="text-2xl mt-2">{post.title}</h1>
+                      <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{post.excerpt}.</p>
+                    </a>
+                  </div>
+                </div>
+                </article>
+        )
+      })
+    }
+  </div>
+    <div class="flex items-center justify-center pt-10">
+      <Button title="Guarda di più" link="/blog" />
+  </div>
+</div>
+</section>
+

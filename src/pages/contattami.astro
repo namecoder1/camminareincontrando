@@ -1,0 +1,41 @@
+---
+export const prerender = false;
+
+import MainLayout from '../layout/MainLayout.astro';
+import Faq from '../components/Faq.astro';
+import Hero from '../components/Hero.astro';
+import Divider from '../components/Divider.astro';
+---
+
+<MainLayout
+  title="Contattami"
+  description="In questa pagina puoi trovare tutti i link a cui contattarmi, non esitare, sono pronto a rispondere alle tue domande e ad aiutarti!"
+  ogTitle="Contattami | Camminare Incontrando"
+  ogDescription='In questa pagina puoi trovare tutti i link a cui contattarmi, non esitare, sono pronto a rispondere alle tue domande e ad aiutarti!'
+  robots='index, follow'
+  keywords='christian cesaroni, camminare incontrando'
+  ogType='website'
+  ogUrl='/contattami'
+>
+  <Hero
+    heroImg="/src/assets/hero.jpg"
+    title="Contattami"
+    description="Mettiti in contatto con me attraverso questi link, se hai domande o sei curioso e se hai bisogno del mio aiuto sarò felice di rispondere a qualsiasi tua richiesta."
+  />
+  <div class="my-32 font-poppins">
+    <h1
+      class="mx-3 text-center text-3xl font-bold leading-10 tracking-tight text-gray-900"
+    >
+      Puoi trovarmi qui:
+    </h1>
+    <div class="flex mx-10 items-center justify-center flex-wrap mt-10 gap-10">
+      <a
+        href="mailto:info@camminareincontrando.com"
+        class="border-red-400/80 bg-white border-2 py-2 px-3 rounded-xl text-red-700 hover:bg-red-500/80 hover:text-white duration-200 hover:border-red-400/70"
+        ><i class="fa-solid fa-envelope mr-2"></i> Scrivimi</a
+      >
+    </div>
+  </div>
+  <Divider />
+  <Faq />
+</MainLayout>

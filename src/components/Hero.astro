@@ -1,0 +1,27 @@
+---
+const { heroImg, title, description } = Astro.props;
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/*.{jpeg,jpg,png,gif}');
+if (!images[heroImg]) throw new Error(`"${heroImg}" does not exist in glob: "src/assets/*.{jpeg,jpg,png,gif}"`);
+
+---
+
+<section id="hero">
+<div class="relative font-poppins">
+  <div class="absolute inset-x-0 bottom-0 h-full bg-gray-800"></div>
+  <div class=" max-w-auto  ">
+    <div class="relative shadow-xl sm:overflow-hidden ">
+      <div class="absolute inset-0">
+        <Image class="h-full w-full object-cover opacity-40" src={images[heroImg]()} alt="Immagine di copertina" />
+      </div>
+      <div class="relative px-6 py-16 sm:py-24 lg:px-8 lg:py-32">
+        <h1 class="text-center text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+          <span class="block text-white">{title}</span>
+        </h1>
+        <p class="mx-auto mt-6 max-w-lg text-center text-xl text-white sm:max-w-3xl">{description}</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>

@@ -1,0 +1,66 @@
+---
+import Button from './Button.astro';
+import { Image } from 'astro:assets';
+import aboutImg from '../assets/about.jpg';
+---
+
+<div class="bg-white py-24 sm:py-32 font-poppins">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl lg:mx-0 lg:max-w-none flex flex-col">
+      <h1
+        class="mt-2 text-3xl text-center font-bold tracking-tight sm:text-4xl"
+      >
+        Chi sono?
+      </h1>
+      <div
+        class="mt-10 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-700 lg:max-w-none lg:grid-cols-2"
+      >
+        <div class="relative overflow-hidden">
+          <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <Image
+              class="mb-[-12%] rounded-xl shadow-2xl ring-1 ring-gray-900/10"
+              src={aboutImg}
+              alt="Immagine del Proprietario Christian Cesaroni"
+            />
+            <div class="relative" aria-hidden="true">
+              <div class="absolute -inset-x-20 bottom-0"></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <h2 class="font-bold text-4xl text-black">
+            Piacere! Mi chiamo Christian Cesaroni.
+          </h2>
+          <p class="mt-8 text-gray-600">
+            Consulente ed Operatore del Benessere, attraverso gli studi nel
+            campo delle Scienze Motorie, <a
+              class="underline hover:text-red-700 underline-offset-2"
+              target="_blank"
+              href="https://www.accademiacraniosacrale.it/"
+              >Tecnica Craniosacrale metodo Upledger</a
+            > , Massofisioterapia, <a
+              class="underline hover:text-red-700 underline-offset-2"
+              target="_blank"
+              href="https://www.counselingpsicobiologico.it">Life Coaching</a
+            >, <a
+              class="underline hover:text-red-700 underline-offset-2"
+              target="_blank"
+              href="https://heqigong.com/it/">Qigong dell'essenza celeste</a
+            >  e funzionamento ed utilizzo consapevole delle <a
+              class="underline hover:text-red-700 underline-offset-2"
+              target="_blank"
+              href="https://everythinglight.it">onde cerebrali più profonde</a
+            >; ho creato Camminare Incontrando per la ricerca del Benessere nel
+            senso più ampio del termine. Il progetto <strong
+              >nasce infatti allo scopo di collegare ed ampliare le Conoscenze</strong
+            > fornendo spunti ad ognuno per osservare e migliorare il proprio stile
+            di vita aumentando la propria consapevolezza.
+          </p>
+          <div class="mt-10 flex justify-center">
+            <Button title="Contattami" link="/contattami" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import hero from "../assets/hero-image.png"
+import Button from "./Button.astro";
+---
+
+<section class="font-poppins" id="hero">
+  <div class="bg-gray-900">
+    <div class="relative isolate overflow-hidden pt-4">
+      <Image src={hero} alt="Immagine di copertina" quality="low" class="absolute inset-0 -z-10 h-full w-full object-cover opacity-60" />
+      <div class="mx-auto max-w-3xl py-32 sm:py-40 lg:py-56">
+        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div class="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-200 ring-1 ring-white/30 hover:ring-white/50">
+            Nuovi articoli sul blog. <a href="/blog" class="font-semibold text-red-100/70 ml-1"><span class="absolute inset-0" aria-hidden="true"></span>Leggi ora <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="text-center px-8">
+          <h1 class="text-4xl font-bold leading-normal text-white sm:text-6xl sm:leading-[1.2]">Muoviti con determinazione nel cammino della tua vita</h1>
+          <div class="mt-10 flex items-center justify-center gap-x-6">
+            <Button title="Esplora" link="/scopri" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import lifecoach from "../assets/life-coaching.jpeg";
+import ondecer from "../assets/onde-cerebrali.jpeg";
+import percorsi from "../assets/percorsi-personalizzati.jpeg";
+import fisio from "../assets/masso-fisioterapia.jpeg";
+---
+
+<div class="bg-white py-24 md:py-32 lg:py-40 font-poppins">
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div class="mx-auto max-w-2xl lg:mx-0">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl uppercase">Tu sei la vera tecnologia</h2>
+      <h3 class="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl uppercase mt-1 xl:mt-3">Utilizzala al meglio per la tua vita</h3>
+      <p class="my-6 text-lg leading-8 text-gray-600">Ho a cuore il benessere e la salute del mio cliente e mi piace aiutarlo con una vasta gamma di servizi per supportare il suo benessere e la sua crescita personale.</p>
+      <div class="flex">
+        <Button title="Entra" link="/scopri" />
+      </div>
+    </div>
+    <ul role="list" class="mx-auto grid max-w-2xl grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-8 xl:col-span-2">
+      <li class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+        <Image src={lifecoach} alt="Immagine Life Coach" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+            <span class="absolute inset-0"></span>
+            Life Coaching
+        </h3>
+      </li>
+      <li class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+        <Image src={ondecer} alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+            <span class="absolute inset-0"></span>
+            Onde Cerebrali Profonde
+        </h3>
+      </li>
+      <li class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+        <Image src={fisio} alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+            <span class="absolute inset-0"></span>
+            Masso Fisioterapia
+        </h3>
+      </li>
+      <li class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+        <Image src={percorsi} alt="" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+        <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
+        <div class="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10"></div>
+
+        <h3 class="mt-3 text-2xl font-semibold leading-6 text-white">
+            <span class="absolute inset-0"></span>
+            Percorsi su Misura
+        </h3>
+      </li>
+    </ul>
+  </div>
+  </div>  
+</div>

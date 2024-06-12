@@ -1,0 +1,31 @@
+---
+import MainLayout from '../layout/MainLayout.astro';
+import Button from '../components/Button.astro';
+---
+
+<MainLayout
+  title="Calendario"
+  description="In questa pagina mostro tutti gli eventi che propongo, salva il calendario per non mancare!"
+  ogTitle="Calendario | Camminare Incontrando"
+  ogDescription="In questa pagina mostro tutti gli eventi che propongo, salva il calendario per non mancare!"
+  robots="index, nofollow"
+  keywords="eventi, calendario"
+  ogType="webiste"
+  ogUrl="/calendario"
+>
+  <h1 class="text-center text-3xl font-bold mt-20">
+    Tutti gli Eventi e le Attività
+  </h1>
+  <div class="flex justify-center items-center my-5 mx-5">
+    <iframe
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=2&ctz=Europe%2FRome&bgcolor=%23ffffff&showTz=0&showPrint=0&showCalendars=0&src=Z2VzdGlvbmFsZS5jaUBnbWFpbC5jb20&color=%23039BE5"
+      style="border-width:0"
+      width="800"
+      height="600"
+      frameborder="0"
+      scrolling="no"></iframe>
+  </div>
+  <div class="my-10">
+    <Button title="Torna indietro" link="/scopri" />
+  </div>
+</MainLayout>
