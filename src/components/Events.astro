@@ -29,7 +29,7 @@ const events = await sanityClient.fetch(`*[_type == "event" && multipleDays == f
     <div class="mx-auto max-w-2xl text-center">
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Eventi & Incontri</h2>
     </div>
-    <div class="mx-auto mt-16 flex items-center justify-center flex-wrap gap-8 sm:mt-20 lg:mx-auto lg:max-w-3xl ">
+    <div class="mx-auto mt-12 flex items-center justify-center flex-wrap gap-8 sm:mt-10 lg:mx-auto lg:max-w-3xl ">
       {
         longEvents.map((event: any) => {
           return (
@@ -87,7 +87,7 @@ const events = await sanityClient.fetch(`*[_type == "event" && multipleDays == f
         })
       }
     </div>
-    <div class="mt-10">
+    <div class="mt-16">
       <Button title="Guarda tutti" link="/calendario" />
     </div>
   </div>
